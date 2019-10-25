@@ -1,0 +1,8 @@
+{
+  "node_name": "consul2-client",
+  "data_dir": "/var/consul",
+  "server": false,
+  "start_join": [
+    "172.26.0.2"
+  ]
+}
