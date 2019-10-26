@@ -21,7 +21,7 @@ curl localhost:8500/v1/agent/members
 docker stop consul-server
 docker rm $(docker ps -a -q)
 docker build --rm -t consul-server:latest ./server
-docker run --name consul-server -d -p 8500:8500 consul-server
+docker run --name consul-server -d -p 8300:8300 -p 8301:8301 -p 8302:8302 -p 8400:8400 -p 8500:8500 -p 8600:8600 consul-server
 
 docker exec -it consul-server bash
 
@@ -32,5 +32,6 @@ docker build --rm -t consul-client:latest ./client
 docker run --name consul-client -d consul-client
 
 docker exec -it consul-client bash
-docker run --rm -it consul-client bash
+
+consul agent -dev -enable-script-checks -config-dir=/etc/consul.d/
 ```

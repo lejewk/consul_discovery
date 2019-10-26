@@ -2,6 +2,8 @@
   "node_name": "consul2-client",
   "data_dir": "/var/consul",
   "server": false,
+  "bind_addr": "0.0.0.0",
+  "client_addr": "0.0.0.0",
   "start_join": [
     "172.17.0.2"
   ]

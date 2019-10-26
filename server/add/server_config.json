@@ -2,7 +2,6 @@
   "node_name": "consul1",
   "data_dir": "/var/consul",
   "server": true,
-  "addresses": {
-    "https": "0.0.0.0"
-  }
+  "bind_addr": "0.0.0.0",
+  "client_addr": "0.0.0.0"
 }
