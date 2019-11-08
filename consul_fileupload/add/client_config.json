@@ -1,0 +1,7 @@
+{
+  "node_name": "my_fileupload",
+  "data_dir": "/var/consul",
+  "server": false,
+  "bind_addr": "0.0.0.0",
+  "client_addr": "0.0.0.0"
+}
