@@ -8,4 +8,7 @@ RUN unzip /usr/local/bin/consul_1.6.1_linux_amd64.zip -d /usr/local/bin \
 RUN mkdir -p /etc/consul.d
 ADD /add /
 
-CMD consul agent -dev -enable-script-checks -config-dir=/etc/consul.d/ -retry-join configration
+CMD consul agent \
+  -enable-script-checks \
+  -config-dir=/etc/consul.d/ \
+  -retry-join=configuration

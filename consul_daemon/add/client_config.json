@@ -1,7 +1,12 @@
 {
-  "node_name": "my_daemon",
+  "node_name": "consul_daemon",
   "data_dir": "/var/consul",
   "server": false,
-  "bind_addr": "0.0.0.0",
-  "client_addr": "0.0.0.0"
+  "watches": [
+    {
+      "type": "key",
+      "keyprefix": "data_source/postgresql_ec_daemon_master",
+      "handler": "/etc/consul.d/watch_handler.sh"
+    }
+  ]
 }
