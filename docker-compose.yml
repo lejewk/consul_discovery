@@ -1,10 +1,9 @@
 version: "3"
 services:
-  # redis:
-  #   container_name: redis
-  #   image: redis:latest
-  #   ports:
-  #     - "6377:6379"
+  redis-server:
+    image: redis:latest
+    ports:
+      - "6377:6379"
 
   # configration:
   #   container_name: configration
@@ -39,16 +38,20 @@ services:
   #   depends_on:
   #     - configration
 
-  # service_fileupload:
-  #   container_name: service_fileupload
-  #   image: service_fileupload:latest
-  #   build: ./service_fileupload/
-  #   depends_on:
-  #     - redis
-
   service_daemon:
     container_name: service_daemon
     image: service_daemon:latest
     build: ./service_daemon/
-    # depends_on:
-    #   - redis
+    ports:
+      - "8081:8080"
+    depends_on:
+      - redis-server
+
+  service_fileupload:
+    container_name: service_fileupload
+    image: service_fileupload:latest
+    build: ./service_fileupload/
+    ports:
+      - "8082:8080"
+    depends_on:
+      - redis-server

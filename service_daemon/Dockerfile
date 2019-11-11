@@ -1,13 +1,17 @@
-FROM node:11-alpine
+#Specify a base image
+FROM node:alpine
 
-RUN mkdir -p /usr/src/app
+#Specify a working directory
+WORKDIR /usr/app
 
-WORKDIR /usr/src/app
+#Copy the dependencies file
+COPY ./package.json ./
 
-COPY . .
+#Install dependencies
+RUN npm install 
 
-RUN npm install
+#Copy remaining files
+COPY ./ ./
 
-EXPOSE 3000
-
-CMD ["npm", "run", "start"]
+#Default command
+CMD ["npm","start"]
