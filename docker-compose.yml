@@ -24,12 +24,12 @@ services:
     depends_on:
       - configuration
 
-  # consul_daemon:
-  #   container_name: consul_daemon
-  #   image: consul_daemon:latest
-  #   build: ./consul_daemon/
-  #   depends_on:
-  #     - configuration
+  consul_daemon:
+    container_name: consul_daemon
+    image: consul_daemon:latest
+    build: ./consul_daemon/
+    depends_on:
+      - configuration
 
   # consul_fileupload:
   #   container_name: consul_fileupload
@@ -38,14 +38,14 @@ services:
   #   depends_on:
   #     - configuration
 
-  # service_daemon:
-  #   container_name: service_daemon
-  #   image: service_daemon:latest
-  #   build: ./service_daemon/
-  #   ports:
-  #     - "8081:8080"
-  #   depends_on:
-  #     - redis-server
+  service_daemon:
+    container_name: service_daemon
+    image: service_daemon:latest
+    build: ./service_daemon/
+    ports:
+      - "8081:8080"
+    depends_on:
+      - redis-server
 
   # service_fileupload:
   #   container_name: service_fileupload

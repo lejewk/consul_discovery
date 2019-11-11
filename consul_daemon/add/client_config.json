@@ -5,7 +5,7 @@
   "watches": [
     {
       "type": "key",
-      "keyprefix": "data_source/postgresql_ec_daemon_master",
+      "key": "data_source/postgresql_ec_daemon_master/host",
       "handler": "/etc/consul.d/watch_handler.sh"
     }
   ]
