@@ -9,7 +9,7 @@ const client = redis.createClient({
 
 //defining the root endpoint
 app.get('/', (req, res) => {
-  client.get('data_source/postgresql_ec_daemon_master/host', (err, value) => {
+  client.get('data_source/postgresql_daemon/host', (err, value) => {
       res.send('Daemon client connect to database host: ' + value)
   })
 })

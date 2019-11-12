@@ -1,5 +1,19 @@
 # 구성
+|service name|description|
+|---|---|
+|redis-server|key/value 저장|
+|configuration|consul server 실행|
+|config_manager|key 감시 & 해당 key/value 를 redis 에 저장|
+|consul_fileupload|``|
+|service_daemon|redis 에 저장된 key를 조회하여 출력|
+|service_fileupload|``|
 
+# 준비
+centos_redis_consul 이미지가 필요합니다.
+``` bash
+# build script
+docker build -f ./centos_redis_consul/Dockerfile -t centos_redis_consul:latest .
+```
 
 # docker-compose
 ``` bash
@@ -10,31 +24,19 @@ docker-compose up -d
 docker-compose down
 ```
 
-# consul curl
+# 노드 확인
+http://localhost:8500/v1/catalog/nodes
+
+# put kv
 ``` bash
-# 전체 노드 보기
-curl localhost:8500/v1/catalog/nodes
-# 전체 맴버 보기
-curl localhost:8500/v1/agent/members
+# config_manager 컨테이너 접근
+docker exec -it config_manager bash
+
+# consul kv
+consul kv put data_source/postgresql_daemon/host daemon-master
+consul kv put data_source/redis/host redis-master
 ```
 
-# test command
-``` bash
-# server
-docker stop consul-server
-docker rm $(docker ps -a -q)
-docker build --rm -t consul-server:latest ./server
-docker run --name consul-server -d -p 8300:8300 -p 8301:8301 -p 8302:8302 -p 8400:8400 -p 8500:8500 -p 8600:8600 consul-server
-
-docker exec -it consul-server bash
-
-# client
-docker stop consul-client
-docker rm $(docker ps -a -q)
-docker build --rm -t consul-client:latest ./client
-docker run --name consul-client -d consul-client
-
-docker exec -it consul-client bash
-
-consul agent -dev -enable-script-checks -config-dir=/etc/consul.d/
-```
+# 서비스 확인
+http://localhost:8081/
+http://localhost:8082/
