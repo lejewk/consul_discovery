@@ -9,4 +9,4 @@ RUN wget https://releases.hashicorp.com/consul/1.6.1/consul_1.6.1_linux_amd64.zi
 RUN unzip /tmp/consul_1.6.1_linux_amd64.zip -d /usr/local/bin
 
 # build script
-# docker build -f ./centos_redis-cli_consul/Dockerfile -t centos_redis-cli_consul:latest .
+# docker build -f ./centos_redis_consul/Dockerfile -t centos_redis_consul:latest .

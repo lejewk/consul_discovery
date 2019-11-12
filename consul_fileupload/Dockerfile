@@ -1,4 +1,4 @@
-FROM centos_redis-cli_consul
+FROM centos_redis_consul
 
 RUN mkdir -p /etc/consul.d
 ADD /add /etc/consul.d
