@@ -1,11 +1,10 @@
-FROM centos
+FROM centos_redis-cli_consul
 
-RUN yum -y update
-RUN yum install wget unzip vim -y
-RUN wget https://releases.hashicorp.com/consul/1.6.1/consul_1.6.1_linux_amd64.zip -P /usr/local/bin
-RUN unzip /usr/local/bin/consul_1.6.1_linux_amd64.zip -d /usr/local/bin \
-  && rm /usr/local/bin/consul_1.6.1_linux_amd64.zip
 RUN mkdir -p /etc/consul.d
 ADD /add /etc/consul.d
+RUN chmod 755 /etc/consul.d/watch_handler.sh
 
-CMD consul agent -dev -enable-script-checks -config-dir=/etc/consul.d/ -retry-join configration
+CMD consul agent \
+  -enable-script-checks \
+  -config-dir=/etc/consul.d/ \
+  -retry-join=configuration

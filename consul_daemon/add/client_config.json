@@ -6,7 +6,8 @@
     {
       "type": "key",
       "key": "data_source/postgresql_ec_daemon_master/host",
-      "handler": "/etc/consul.d/watch_handler.sh"
+      "handler_type": "script",
+      "args": ["sh", "-c", "/etc/consul.d/watch_handler.sh"]
     }
   ]
 }

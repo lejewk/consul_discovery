@@ -1,7 +1,13 @@
 {
-  "node_name": "my_fileupload",
+  "node_name": "consul_fileupload",
   "data_dir": "/var/consul",
   "server": false,
-  "bind_addr": "0.0.0.0",
-  "client_addr": "0.0.0.0"
+  "watches": [
+    {
+      "type": "key",
+      "key": "data_source/redis/host",
+      "handler_type": "script",
+      "args": ["sh", "-c", "/etc/consul.d/watch_handler.sh"]
+    }
+  ]
 }
