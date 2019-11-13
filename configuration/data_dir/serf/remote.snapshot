@@ -1,3 +1,0 @@
-alive: configuration.dc1 172.23.0.5:8302
-alive: configuration.dc1 172.24.0.5:8302
-alive: configuration.dc1 172.25.0.4:8302
