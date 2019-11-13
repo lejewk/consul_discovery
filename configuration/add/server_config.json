@@ -1,5 +1,9 @@
 {
   "node_name": "configuration",
-  "data_dir": "/var/consul",
-  "server": true
+  "bootstrap": true,
+  "server": true,
+  "ui": true,
+  "bind_addr": "0.0.0.0",
+  "client_addr": "0.0.0.0",
+  "data_dir": "/var/consul"
 }

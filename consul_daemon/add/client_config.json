@@ -2,6 +2,12 @@
   "node_name": "consul_daemon",
   "data_dir": "/var/consul",
   "server": false,
+  "start_join": [
+    "configuration"
+  ],
+  "retry_join": [
+    "configuration"
+  ],
   "watches": [
     {
       "type": "key",

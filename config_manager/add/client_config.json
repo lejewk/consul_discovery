@@ -1,0 +1,11 @@
+{
+  "node_name": "config_manager",
+  "data_dir": "/var/consul",
+  "server": false,
+  "start_join": [
+    "configuration"
+  ],
+  "retry_join": [
+    "configuration"
+  ]
+}

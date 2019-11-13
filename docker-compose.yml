@@ -9,6 +9,8 @@ services:
     container_name: configuration
     image: configuration:latest
     build: ./configuration/
+    volumes:
+      - ./configuration/data_dir:/var/consul
     ports:
       - "8400:8400"
       - "8500:8500"
