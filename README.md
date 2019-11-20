@@ -10,13 +10,6 @@ consul kv 와 비즈니스 활용 예시 입니다.
 |consul_agent|data_source 감시 & data_source json 을 redis 에 저장|
 |service_fileupload|data_source 출력|
 
-# 준비
-centos_redis_consul 이미지가 필요합니다.
-``` bash
-# build script
-docker build -f ./centos_redis_consul/Dockerfile -t centos_redis_consul:latest .
-```
-
 # docker-compose
 ``` bash
 # 실행
@@ -46,3 +39,10 @@ consul kv put data_source '{"postgresql_mall_master":{"type":"pgsql","host":"loc
 
 # 서비스 확인
 http://localhost:8082/
+
+# 베이스 이미지 빌드 (옵션)
+centos_redis_consul 이미지가 필요합니다.
+``` bash
+# build script
+docker build -f ./centos_redis_consul/Dockerfile -t centos_redis_consul:latest .
+```
