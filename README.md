@@ -29,6 +29,9 @@ docker-compose down
 # 노드 확인
 http://localhost:8500/v1/catalog/nodes
 
+# UI
+http://localhost:8500/ui
+
 # put kv
 ``` bash
 # config_manager 컨테이너 접근
