@@ -1,0 +1,21 @@
+{
+  "node_name": "consul_agent",
+  "data_dir": "/var/consul",
+  "server": false,
+  "bind_addr": "0.0.0.0",
+  "client_addr": "0.0.0.0",
+  "start_join": [
+    "configuration"
+  ],
+  "retry_join": [
+    "configuration"
+  ],
+  "watches": [
+    {
+      "type": "key",
+      "key": "data_source",
+      "handler_type": "script",
+      "args": ["sh", "-c", "/etc/consul.d/watch_handler.sh"]
+    }
+  ]
+}

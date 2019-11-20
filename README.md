@@ -4,13 +4,11 @@ consul kv 와 비즈니스 활용 예시 입니다.
 # 구성
 |service name|description|
 |---|---|
-|redis_service|key/value 저장|
+|redis_service|data_source json 저장|
 |configuration|consul server 실행|
 |config_manager|kv 를 수동 갱신|
-|consul_daemon|key 감시 & 해당 key/value 를 redis 에 저장|
-|consul_fileupload|``|
-|service_daemon|redis 에 저장된 key를 조회하여 출력|
-|service_fileupload|``|
+|consul_agent|data_source 감시 & data_source json 을 redis 에 저장|
+|service_fileupload|data_source 출력|
 
 # 준비
 centos_redis_consul 이미지가 필요합니다.
@@ -37,10 +35,11 @@ http://localhost:8500/v1/catalog/nodes
 docker exec -it config_manager bash
 
 # consul kv
-consul kv put data_source/postgresql_daemon/host daemon-master
-consul kv put data_source/redis/host redis-master
+consul kv put data_source '{"postgresql_mall_master":{"type":"pgsql","host":"/tmp","port":9999,"database":"shopdb","username":"wookuser","password":"abcdefg"},"postgresql_coupon_master":{"type":"pgsql","host":"/tmp","port":9999,"database":"coupon","username":"bigc","password":"supec"},"memcached":{"host":"localhost","port":11211},"redis":{"host":"redis-serfvice","port":11211}}'
+
+# consul kv change, postgresql_mall_master.host = localhost
+consul kv put data_source '{"postgresql_mall_master":{"type":"pgsql","host":"localhost","port":9999,"database":"shopdb","username":"wookuser","password":"abcdefg"},"postgresql_coupon_master":{"type":"pgsql","host":"/tmp","port":9999,"database":"coupon","username":"bigc","password":"supec"},"memcached":{"host":"localhost","port":11211},"redis":{"host":"redis-serfvice","port":11211}}'
 ```
 
 # 서비스 확인
-http://localhost:8081/
 http://localhost:8082/

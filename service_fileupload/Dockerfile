@@ -1,17 +1,10 @@
-#Specify a base image
-FROM node:alpine
+FROM php:7-apache
 
-#Specify a working directory
-WORKDIR /usr/app
+RUN pecl install redis-4.0.1 \
+    && docker-php-ext-enable redis
 
-#Copy the dependencies file
-COPY ./package.json ./
+RUN apt-get -y update
+RUN apt-get -y install vim zip
 
-#Install dependencies
-RUN npm install 
-
-#Copy remaining files
-COPY ./ ./
-
-#Default command
-CMD ["npm","start"]
+RUN mkdir -p /var/www/html
+ADD /src /var/www/html

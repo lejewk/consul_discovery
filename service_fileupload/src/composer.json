@@ -1,0 +1,13 @@
+{
+    "name": "wook/fileupload",
+    "description": "test",
+    "authors": [
+        {
+            "name": "jwlee08",
+            "email": "jwlee08@cafe24corp.com"
+        }
+    ],
+    "require": {
+      "dcarbone/php-consul-api": "@stable"
+    }
+}

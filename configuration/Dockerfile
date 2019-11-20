@@ -1,4 +1,4 @@
-FROM centos_redis_consul
+FROM lejewk/centos_redis_consul:latest
 
 RUN mkdir -p /etc/consul.d
 RUN mkdir -p /var/consul
